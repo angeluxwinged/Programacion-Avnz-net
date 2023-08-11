@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <style>
+        canvas{
+            background: rgb(255, 255, 255);
+            border: 2px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="800" height="800"> </canvas>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.fillStyle = "#ff96ff";
+        ctx.moveTo(410, 400);
+        ctx.lineTo(450, 570);
+        ctx.lineTo(600, 570);
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.moveTo(340, 260);
+        ctx.lineTo(530, 480);
+        ctx.stroke();
+
+    </script>
+</body>
+</html>
