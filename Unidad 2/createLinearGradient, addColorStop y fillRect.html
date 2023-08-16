@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <style>
+        canvas{
+            background: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500"> </canvas>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+        const grd = ctx.createLinearGradient(85,85,200,100);
+        grd.addColorStop(0.3, "red");
+        grd.addColorStop(0.6, "blue");
+        grd.addColorStop(1, "green");
+        ctx.fillStyle = grd;
+        ctx.fillRect(85,85,200,100);
+
+    </script>
+</body>
+</html>
