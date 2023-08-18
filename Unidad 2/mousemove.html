@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <style>
+        canvas{
+            background: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500"> </canvas>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    var color = random_rgba();
+    var figura = "circ";
+
+    canvas.addEventListener("mouseover", (e) => {
+        if (figura === "circ"){
+                figura = "cuad";
+            }else{
+                figura = "circ";
+            }
+    })
+
+    canvas.addEventListener("mouseout", (e) => {
+        color = random_rgba();
+    })
+
+    canvas.addEventListener("mousemove", (e) => {
+        ctx.fillStyle = "black";
+        ctx.fillRect(e.layerX-5,e.layerY-5,10,10);
+        ctx.strokeRect(e.layerX-5,e.layerY-5,10,10);
+    })
+
+    canvas.addEventListener("mousedown", (e) => {
+        if (figura === "circ"){
+            ctx.fillStyle = color;
+            ctx.strokeStyle = "black";
+            ctx.beginPath();
+            ctx.arc(e.layerX,e.layerY,50, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+        }else{
+            ctx.fillStyle = color;
+            ctx.fillRect(e.layerX-50,e.layerY-50,100,100);
+            ctx.strokeRect(e.layerX-50,e.layerY-50,100,100);
+        }
+    })
+
+    function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+}
+
+
+    </script>
+</body>
+</html>
