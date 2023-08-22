@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar</title>
+
+    <style>
+        canvas{
+            background: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500"> </canvas>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+        //cabeza
+        ctx.fillStyle = "rgb(243, 211, 118)";
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.arc(200,130,50, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+        //sombrero
+        ctx.fillStyle = 'rgb(97, 54, 0)';
+        ctx.fillRect(125,80,150,40);
+        ctx.fillRect(175,55,50,50);
+
+        //torzo
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(150,180,100,200);
+
+        var bigote = new Image();
+        bigote.src = "images/bigote.png";
+        ctx.drawImage(bigote, 150, 110, 100, 100);
+
+        //pañuelo
+        ctx.fillStyle = "rgb(229, 36, 36)";
+        ctx.fillRect(160,155,80,30);
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(229, 36, 36)";
+        ctx.moveTo(160, 185);
+        ctx.lineTo(200, 225);
+        ctx.lineTo(240, 185);
+        ctx.fill();
+        ctx.closePath();
+
+        //brazos
+        ctx.fillStyle = 'rgb(132, 83, 0)';
+        ctx.fillRect(250,180,40,150);
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(250,180,40,150);
+        ctx.fillStyle = 'rgb(132, 83, 0)';
+        ctx.fillRect(110,180,40,150);
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(110,180,40,150);
+
+        //manos
+        ctx.fillStyle = "rgb(243, 211, 118)";
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.arc(270,330,20, 0, Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = "rgb(243, 211, 118)";
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.arc(130,330,20, 0, Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+        //piernas
+        ctx.fillStyle = 'rgb(46,70,112)';
+        ctx.fillRect(220,380,40,150);
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(220,380,40,150);
+        ctx.fillStyle = 'rgb(46,70,112)';
+        ctx.fillRect(140,380,40,150);
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(140,380,40,150);
+
+        //pies
+        ctx.fillStyle = 'rgb(20,40,12)';
+        ctx.fillRect(220,480,40,40);
+        ctx.fillStyle = 'rgb(20,40,12)';
+        ctx.fillRect(140,480,40,40);
+
+        //ojos
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.arc(185,135,5, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.arc(215,135,5, 0, 2 * Math.PI);
+        ctx.fill();
+
+        
+    </script>
+</body>
+</html>
