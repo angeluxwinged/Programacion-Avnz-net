@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar</title>
+
+    <style>
+        canvas{
+            background: rgb(75, 132, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="800" height="500"> </canvas>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+        //sol
+        ctx.fillStyle = "rgb(255, 203, 84)";
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.arc(100,80,50, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+        //pasto
+        ctx.fillStyle = 'rgb(50, 200, 50)';
+        ctx.fillRect(0,400,800,100);
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(0,400,800,100);
+        
+        //casa
+        ctx.fillStyle = 'rgb(219, 35, 35)';
+        ctx.fillRect(150,200,300,200);
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(150,200,300,200);
+
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(95, 22, 0)";
+        ctx.moveTo(110, 200);
+        ctx.lineTo(300,85);
+        ctx.lineTo(490, 200);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.fillStyle = 'rgb(221, 238, 236)';
+        ctx.fillRect(200,230,50,50);
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(200,230,50,50);
+        ctx.beginPath();
+        ctx.moveTo(225, 230);
+        ctx.lineTo(225, 280);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(200, 255);
+        ctx.lineTo(250, 255);
+        ctx.stroke();
+
+        ctx.fillStyle = 'rgb(221, 238, 236)';
+        ctx.fillRect(350,230,50,50);
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(350,230,50,50);
+        ctx.beginPath();
+        ctx.moveTo(375, 230);
+        ctx.lineTo(375, 280);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(350, 255);
+        ctx.lineTo(400, 255);
+        ctx.stroke();
+        
+        ctx.fillStyle = 'rgb(214, 156, 56)';
+        ctx.fillRect(275,300,50,100);
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(275,300,50,100);
+
+        ctx.fillStyle = "rgb(255, 203, 84)";
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.arc(310,355,5, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+        //arbol
+        ctx.fillStyle = 'rgb(178, 107, 43)';
+        ctx.fillRect(620,280,60,120);
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(620,280,60,120);
+
+        ctx.fillStyle = "rgb(15, 167, 26)";
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.arc(650,205,120, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+        var manzana = new Image();
+        manzana.src = "images/manzana.png";
+        ctx.drawImage(manzana, 625, 120, 45, 45);
+        var manzana2 = new Image();
+        manzana2.src = "images/manzana.png";
+        ctx.drawImage(manzana2, 695, 190, 45, 45);
+        var manzana3 = new Image();
+        manzana3.src = "images/manzana.png";
+        ctx.drawImage(manzana3, 565, 210, 45, 45);
+
+    </script>
+</body>
+</html>
