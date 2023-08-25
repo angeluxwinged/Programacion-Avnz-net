@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <style>
+        canvas{
+            background: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500"> </canvas>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    var color = random_rgba();
+    var x = 200;
+    var y = 200;
+    var dir = 0;
+    var speed = 10;
+
+    document.addEventListener("keydown", (e) => {
+        console.log(e);
+
+        if(e.keyCode===87){
+            dir = 1;
+        }
+
+        if(e.keyCode===83){
+            dir = 2;
+        }
+
+        if(e.keyCode===65){
+            dir = 3;
+        }
+
+        if(e.keyCode===68){
+            dir = 4;
+        }
+
+        if(e.keyCode===32){
+            speed+=10;
+        }
+    })
+
+    function update(){
+        if(dir===1){
+            y-=speed;
+            if(y+50<0){
+                y = 500;
+            }
+        }
+
+        if(dir===2){
+            y+=speed;
+            if(y>500){
+                y = 0;
+            }
+        }
+
+        if(dir===3){
+            x-=speed;
+            if(x+50<0){
+                x = 500;
+            }
+        }
+
+        if(dir===4){
+            x+=speed;
+            if(x>500){
+                x = 0;
+            }
+        }
+        paint();
+        window.requestAnimationFrame(update);
+        
+    }
+
+    function paint(){
+        color = random_rgba();
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0,0,500,500);
+
+        ctx.fillStyle = color;
+        ctx.fillRect(x,y,50,50);
+        ctx.strokeRect(x,y,50,50);
+    }
+
+    function play(){
+        window.requestAnimationFrame(update);
+    }
+    play();
+
+    function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    }
+
+    window.requestAnimationFrame = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 17);
+            };
+        }());
+
+    </script>
+</body>
+</html>
