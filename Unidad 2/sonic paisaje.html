@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <style>
+        canvas{
+            background: rgb(32,0,160);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="400"> </canvas>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+        //palmeras
+        ctx.fillStyle = 'rgb(128,64,0)';
+        ctx.fillRect(300,140,15,200);
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(128,224,0)";
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.moveTo(320, 150);
+        ctx.lineTo(420, 170);
+        ctx.lineTo(330, 110);
+        ctx.lineTo(370, 30);
+        ctx.lineTo(270, 100);
+        ctx.lineTo(220, 160);
+        ctx.lineTo(300, 140);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(128,224,0)";
+        ctx.beginPath();
+        ctx.strokeStyle = "black";
+        ctx.moveTo(0, 150);
+        ctx.lineTo(100, 170);
+        ctx.lineTo(10, 110);
+        ctx.lineTo(50, 30);
+        ctx.lineTo(-40, 100);
+        ctx.fill();
+
+        //flor
+        ctx.fillStyle = 'rgb(64,160,0)';
+        ctx.fillRect(448,240,5,60);
+        ctx.fillStyle = 'rgb(224,224,0)';
+        ctx.beginPath();
+        ctx.arc(450,240,23, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.fillStyle = 'rgb(64,96,64)';
+        ctx.beginPath();
+        ctx.arc(450,240,12, 0, 2 * Math.PI);
+        ctx.fill();
+
+        //anillos
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'rgb(203,195,37)';
+        ctx.beginPath();
+        ctx.arc(80,275,12, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(140,275,12, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(200,275,12, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        //suelo
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = 'rgb(128,224,0)';
+        ctx.fillRect(0,300,500,12);
+        ctx.fillStyle = 'rgb(64,160,0)';
+        ctx.fillRect(0,312,500,12);
+        ctx.fillStyle = 'rgb(0,96,0)';
+        ctx.fillRect(0,324,500,12);
+
+        ctx.fillStyle = 'rgb(192,96,0)';
+        ctx.fillRect(0,336,500,20);
+        ctx.fillStyle = 'rgb(192,96,0)';
+        ctx.fillRect(0,340,500,20);
+        ctx.fillStyle = 'rgb(192,96,0)';
+        ctx.fillRect(0,360,500,20);
+        ctx.fillStyle = 'rgb(192,96,0)';
+        ctx.fillRect(0,380,500,20);
+
+        ctx.fillStyle = 'rgb(90,28,0)';
+        var xSquareSuelo = 0;
+        for (let i=0; i<13; i++) {
+            ctx.fillRect(xSquareSuelo,380,20,20);
+            xSquareSuelo += 40;
+        }
+
+        xSquareSuelo = 20;
+        for (let i=0; i<12; i++) {
+            ctx.fillRect(xSquareSuelo,360,20,20);
+            xSquareSuelo += 40;
+        }
+
+        xSquareSuelo = 0;
+        for (let i=0; i<13; i++) {
+            ctx.fillRect(xSquareSuelo,340,20,20);
+            xSquareSuelo += 40;
+        }
+
+        xSquareSuelo = 20;
+        for (let i=0; i<12; i++) {
+            ctx.fillRect(xSquareSuelo,336,20,4);
+            xSquareSuelo += 40;
+        }
+
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(0,336,500,15);
+
+    </script>
+</body>
+</html>
