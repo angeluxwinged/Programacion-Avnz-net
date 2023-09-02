@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+
+    <style>
+        canvas{
+            background: rgb(255, 255, 255);
+        }
+    </style>
+</head> 
+
+<body>
+    <canvas id="myCanvas" width="500" height="500"> </canvas>
+
+    <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    var color = random_rgba();
+    var x = 230;
+    var y = 200;
+    var dir = 0;
+    var speed = 10;
+    var tX = 0;
+    var tY = 0;
+    var score = 0;
+    var pause = false;
+
+    class rectangulo{
+        constructor(x,y, w, h, color){
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+            this.color = color;
+        }
+
+        paint(ctw){
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x,this.y,this.w,this.h);
+            ctx.strokeRect(this.x,this.y,this.w,this.h);
+        }
+
+        seTocan(target){
+            if(this.x < target.x + target.w && this.x + this.w > target.x && this.y < target.y + target.h && this.y + this.h > target.y){
+                return true;
+            }
+        }
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if(e.keyCode===87){
+            if(!pause){
+                dir = 1;
+            }
+        }
+
+        if(e.keyCode===83){
+            if(!pause){
+                dir = 2;   
+            }
+        }
+
+        if(e.keyCode===65){
+            if(!pause){
+                dir = 3;   
+            }
+        }
+
+        if(e.keyCode===68){
+            if(!pause){
+                dir = 4;   
+            }
+        }
+
+        if(e.keyCode===32){
+            pause = !pause;
+        }
+    })
+
+    function update(){
+        if (pause) {
+        ctx.fillStyle = 'black';
+        ctx.font = "30px Arial";
+        ctx.fillText("P A U S E", 190, 220);
+
+        window.requestAnimationFrame(update);
+        return;
+        }
+
+        if(dir===1){
+            player.y-=speed;
+            if(player.y+50<0){
+                player.y = 500;
+            }
+        }
+
+        if(dir===2){
+            player.y+=speed;
+            if(player.y>500){
+                player.y = 0;
+            }
+        }
+
+        if(dir===3){
+            player.x-=speed;
+            if(player.x+50<0){
+                player.x = 500;
+            }
+        }
+
+        if(dir===4){
+            player.x+=speed;
+            if(player.x>500){
+                player.x = 0;
+            }
+        }
+
+        if(player.seTocan(point)){
+            point.x = getRandomInt(500);
+            point.y = getRandomInt(500);
+            score += 10;
+        }
+
+        if(point.seTocan(wall1) || point.seTocan(wall2) || point.seTocan(wall3) || point.seTocan(wall4)){
+            point.x = getRandomInt(500);
+            point.y = getRandomInt(500);
+        }
+
+        if(player.seTocan(wall1) || player.seTocan(wall2) || player.seTocan(wall3) || player.seTocan(wall4)){
+            if(dir===1){
+            player.y+=speed;
+        }
+
+        if(dir===2){
+            player.y-=speed;
+        }
+
+        if(dir===3){
+            player.x+=speed;
+        }
+
+        if(dir===4){
+            player.x-=speed;
+        }
+        }
+
+        paint();
+        window.requestAnimationFrame(update);
+
+    }
+
+    var player = new rectangulo(x,y,50,50,color);
+    var point = new rectangulo(tX,tY,20,20,'black');
+    var wall1 = new rectangulo(130,100,250,20,'blue');
+    var wall2 = new rectangulo(480,100,20,250,'blue');
+    var wall3 = new rectangulo(20,100,20,250,'blue');
+    var wall4 = new rectangulo(130,330,250,20,'blue');
+
+
+    function paint(){
+        color = random_rgba();
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0,0,500,500);
+
+        ctx.fillStyle = 'black';
+        ctx.font = "18px Arial";
+        ctx.fillText("Score: " + score, 230, 20);
+
+        wall1.paint(ctx);
+        wall2.paint(ctx);
+        wall3.paint(ctx);
+        wall4.paint(ctx);
+
+        point.paint(ctx);
+
+        player.color = color;
+        player.paint(ctx);
+    }
+
+    function play(){
+        window.requestAnimationFrame(update);
+    }
+    play();
+
+    function random_rgba() {
+    var o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    }
+
+    function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+    }
+
+    window.requestAnimationFrame = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 17);
+            };
+        }());
+
+    </script>
+</body>
+</html>
