@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vUE.JS</title>
+</head>
+
+<body>
+    <div class="container" id="container_app">
+        <form action="">
+            <fieldset>
+                <legend>
+                    Nombre
+                    <input type="text" v-model="newName">
+                </legend>
+            </fieldset>
+
+            <fieldset>
+                <legend>
+                    Apellido
+                    <input type="text" v-model="newLastName">
+                </legend>
+            </fieldset>
+
+            <button type="button" v-on:click="savePerson">Guardar Datos</button>
+        </form>
+
+        <ul>
+            <li v-for="p in people">
+                {{p.firstName}} {{p.lastName}}
+            </li>
+        </ul>
+        <br>
+
+        <button v-on:click="count++">
+            Click ME {{ count }}
+        </button><br><br>
+
+        <input v-model="name" placeholder="Escribe tu nombre"/>
+        <h2>Hola {{ name }}</h2>
+
+        <input v-model="num1" placeholder="Primer número">
+		<input v-model="num2" placeholder="Segundo número">
+        <button v-on:click="sumar">Sumar</button>
+		<h2>Resultado: {{ result }}</h2>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script type="text/javascript">
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+                return {
+                count: ref(0),
+                name: ref(''),
+                num1: ref(''),
+				num2: ref(''),
+                result: ref(''),
+                newName: ref(''),
+                newLastName: ref(''),
+                people: ref([])
+                }
+            },
+                methods: {
+                    sumar(){
+				        this.result = parseInt(this.num1) + parseInt(this.num2)
+			        },
+
+                    savePerson(){
+                        let people = {
+                            firstName: this.newName,
+                            lastName: this.newLastName
+                        };
+
+                        this.people.push(people)
+                    }
+            }
+            
+        }).mount('#container_app')
+    </script>
+</body>
+</html>
