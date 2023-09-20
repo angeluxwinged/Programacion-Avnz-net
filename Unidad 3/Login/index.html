@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE.JS</title>
+</head>
+
+<body>
+    <div class="container" id="container_app">
+        <form>
+			<fieldset>
+				<legend>Login</legend>
+
+				<label>E-mail</label>
+				<input type="email" v-model="email">
+
+				<label>Password</label>
+				<input type="password" v-model="password">
+
+				<button @click="login">Access</button>
+			</fieldset>
+		</form>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script type="text/javascript">
+        const { createApp, ref } = Vue
+
+        createApp({
+            setup() {
+                return {
+                users: ref([]),
+				email: ref(''),
+				password: ref('')
+                }
+            },
+                methods: {
+                    login(e) {
+                        e.preventDefault();
+                        var email_user = this.email;
+                        var passsword_user = this.password;
+                        
+                        var results = this.users.map(function(u) {
+                            return email_user.toLowerCase() === u.email.toLowerCase() && passsword_user === u.password;
+                        });
+
+                        if (results.includes(true)) {
+                            alert("Login success!");
+                        } else {
+                            alert("Something went wrong...");
+                        }
+                    }
+            },
+
+            mounted(){
+				fetch('users.json')
+				.then((res) => res.json())
+				.then((json) => (this.users = json))
+				.catch((err) => (console.log(err)))
+			}
+            
+        }).mount('#container_app')
+    </script>
+</body>
+</html>
