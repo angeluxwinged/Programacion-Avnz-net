@@ -1,0 +1,132 @@
+[v-cloak] {
+    display: none;
+}
+
+body{
+    background: #03213a;
+}
+
+.container {
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.card {
+    width: 350px;
+    margin: 10px;
+    border: 1px solid #2b2f33;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #1d5685;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    background-color: #03213a;
+    margin-top: 10px;
+    border: 4px solid #1ad1b0;
+    border-radius: 100px;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.card-date {
+    color: rgb(240, 240, 240);
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.btn-details {
+    background-color: #1ad1b0;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* movie */
+.movie{
+    width: 100%;
+}
+
+.movie img{
+    opacity: 20%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 650px;
+    position: absolute;
+}
+
+.container-movie{
+    color: #fff;
+    display: flex;
+}
+
+.description{
+    font-size: 16px;
+}
+
+.rate{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.rate .btn-add{
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    color: #fff;
+    background: #eec407;
+    cursor: pointer;
+    border: 2px solid #272727;
+}
+
+.rate .btn-remove{
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px;
+    color: #fff;
+    background: #c61439;
+    cursor: pointer;
+    border: 2px solid #272727;
+}
+
+.poster img{
+    opacity: unset;
+    width: 300px;
+    height: 500px;
+    margin-left: 50px;
+    margin-top: 70px;
+    border-radius: 7px;
+}
+
+.movie-info{
+    margin-left: 380px;
+    margin-top: 150px;
+}
