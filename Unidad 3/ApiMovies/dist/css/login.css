@@ -1,13 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
 [v-cloak] {
   display: none;
 }
-
 .login-page {
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
+}
+.login-page h2 {
+  text-align: center;
+  color: #FFFFFF;
 }
 .form {
   position: relative;
@@ -40,11 +41,13 @@
   padding: 15px;
   color: #FFFFFF;
   font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
-.form button:hover,.form button:active,.form button:focus {
+.form button:hover,
+.form button:active,
+.form button:focus {
   background: #021422;
 }
 .form .message {
@@ -62,7 +65,8 @@
   max-width: 300px;
   margin: 0 auto;
 }
-.container:before, .container:after {
+.container:before,
+.container:after {
   content: "";
   display: block;
   clear: both;
@@ -89,13 +93,9 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
-.login-page h2{
-    text-align: center;
-    color: #fff;
-}
 body {
   background: #03213a;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  -moz-osx-font-smoothing: grayscale;
 }

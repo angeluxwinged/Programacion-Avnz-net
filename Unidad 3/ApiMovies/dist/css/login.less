@@ -1,0 +1,122 @@
+@back-body-color: #03213a;
+@login-h2-color: #FFFFFF;
+@form-back-color: #FFFFFF;
+@form-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+@form-back-input: #f2f2f2;
+@form-btnBack-color-hvr: #03213a;
+@form-button-hover-bg: #021422;
+
+[v-cloak]{
+    display: none;
+}
+
+.login-page{
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+
+    h2{
+        text-align: center;
+        color: @login-h2-color;
+    }
+}
+
+.form{
+    position: relative;
+    z-index: 1;
+    background: @form-back-color;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: @form-box-shadow;
+
+    input{
+        font-family: @base-font-family;
+        outline: 0;
+        background: @form-back-input;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    button{
+        font-family: @base-font-family;
+        text-transform: uppercase;
+        outline: 0;
+        background: @form-btnBack-color-hvr;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: #FFFFFF;
+        font-size: 14px;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover, &:active, &:focus{
+        background: @form-button-hover-bg;
+        }
+    }
+
+    .message{
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+
+        a{
+        color: #03213a;
+        text-decoration: none;
+        }
+    }
+}
+
+.container{
+    position: relative;
+    z-index: 1;
+    max-width: 300px;
+    margin: 0 auto;
+
+    &:before, &:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .info{
+        margin: 50px auto;
+        text-align: center;
+
+        h1{
+            margin: 0 0 15px;
+            padding: 0;
+            font-size: 36px;
+            font-weight: 300;
+            color: #1a1a1a;
+        }
+
+        span{
+            color: #4d4d4d;
+            font-size: 12px;
+
+            a {
+                color: #000000;
+                text-decoration: none;
+            }
+
+            .fa {
+                color: #EF3B3A;
+            }
+        }
+    }
+}
+
+body{
+    background: @back-body-color;
+    font-family: @base-font-family;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

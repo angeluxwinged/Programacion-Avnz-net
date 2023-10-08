@@ -11,13 +11,18 @@ const { createApp, ref } = Vue
             movies: ref([]),
             id_details: ref(''),
             movie: ref([]),
-            rate: ref("")
+            rate: ref(""),
+            showRate: ref(false)
             }
         },
         
         methods: {
             async changeLoginForm(){
                 this.loginForm = !this.loginForm;
+            },
+
+            async changeShowRate(){
+                this.showRate = !this.showRate;
             },
 
             async login(){
@@ -124,6 +129,38 @@ const { createApp, ref } = Vue
                     }
                 })
                 .catch(error => console.log('error', error));
+            },
+
+            async addFav(){
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkN2Q0ZjlkNDNmOTEyOTUyZTVjYjQ5MTM4MjhiMzJlYiIsInN1YiI6IjY1MTRiODYxYmRkNTY4MDEzZjU4MzBlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ugQlk93CxiFB9aGcRo0TInf0Z3nGHUtXBuHJXFwKPxo");
+
+                var raw = JSON.stringify({
+                "media_type": "movie",
+                "media_id": this.id_details,
+                "favorite": true
+                });
+
+                var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+                };
+
+                fetch("https://api.themoviedb.org/3/account/20503892/favorite", requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Se ha guardado en favoritos',
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+                .catch(error => console.log('error', error));
             }
         },
 
@@ -175,6 +212,33 @@ const { createApp, ref } = Vue
                 .catch(error => console.log('error', error));
             }
             updateMovie();
-        }
+
+            //getRating
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkN2Q0ZjlkNDNmOTEyOTUyZTVjYjQ5MTM4MjhiMzJlYiIsInN1YiI6IjY1MTRiODYxYmRkNTY4MDEzZjU4MzBlNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ugQlk93CxiFB9aGcRo0TInf0Z3nGHUtXBuHJXFwKPxo");
+
+            var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+            };
+
+            fetch("https://api.themoviedb.org/3/movie/"+this.id_details+"/account_states", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                if(result.rated.value != null){
+                    var radios = document.getElementsByName("rateCheck");
+
+                    for (var i = 0; i < radios.length; i++) {
+                        var valRate = result.rated.value.toString()
+                        if(radios[i].value === valRate){
+                            radios[i].checked = true;
+                            break;
+                        }
+                    }
+                }
+            })
+            .catch(error => console.log('error', error));
+                    }
         
     }).mount('#container_app')

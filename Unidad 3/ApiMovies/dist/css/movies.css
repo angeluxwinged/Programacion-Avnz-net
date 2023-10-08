@@ -130,3 +130,40 @@ body{
     margin-left: 380px;
     margin-top: 150px;
 }
+
+.rate-icon{
+    background-color: #03213a;
+    border: 4px solid #1ad1b0;
+    border-radius: 100px;
+    padding: 10px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 10px;
+    position: absolute;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.rate-icon a{
+    padding: 10px;
+}
+
+.fav-icon{
+    background-color: #03213a;
+    border: 4px solid #1ad1b0;
+    border-radius: 100px;
+    padding: 10px 0;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 10px;
+    position: absolute;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.fav-icon a{
+    padding: 10px;
+}
