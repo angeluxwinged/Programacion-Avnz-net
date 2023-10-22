@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
                     <div class="col-md-4">
-                        <form class="form bg-light p-5" action="controllers/authController.php" method="post">
+                        <form class="form bg-light p-5" action="controllers/AuthController.php" method="post">
                             <h3 class="text-center text-danger mb-4">Login</h3>
                             <div class="form-group mb-4">
                                 <label class="text-danger">Correo electronico:</label><br>
